@@ -1,0 +1,14 @@
+# ignore OS generated files
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# ignore private/secret files
+*.der
+*.key
+*.pem

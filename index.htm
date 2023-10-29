@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Mario Bros. Wonder Bingosync Tool</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sakura.css/css/sakura.css" type="text/css" />
+
+    <style>
+      #bg {
+        filter: blur(5px);
+        opacity: 0.9;
+        position: fixed;
+        inset: -5%;
+        width: 110%;
+        height: 110%;
+        max-width: none;
+        object-fit: cover;
+        z-index: -1;
+      }
+
+      main {
+        background: rgba(255, 255, 255, 0.95);
+        z-index: 1;
+        padding: 2rem;
+        box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
+      }
+
+      p {
+        font-size: 1.25rem;
+        line-height: 1.5;
+        margin: 0 0 1rem;
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .flex {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .flex-row {
+        flex-direction: row;
+      }
+
+      header {
+        margin: 0 0 4rem;
+      }
+
+      textarea {
+        font-family: monospace;
+        font-size: 1.5rem;
+        line-height: inherit;
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        resize: vertical;
+      }
+
+      #errors {
+        color: rgb(200, 0, 0);
+        font-weight: bold;
+      }
+
+      #output {
+        font-size: 0.9rem;
+      }
+
+      .hide {
+        background: #aaa;
+        color: #aaa;
+      }
+
+      label[for="hide-output"],
+      #hide-output {
+        display: inline-block;
+        margin-right: 10px; /* Optional: add some spacing between the label and the checkbox */
+      }
+    </style>
+  </head>
+  <body>
+    <img id="bg" src="bg.jpg" alt="Super Mario Bros. Wonder" />
+
+    <main>
+      <header>
+        <h1>Super Mario Bros. Wonder Bingosync Tool</h1>
+        <p>
+          This tool allows you to create custom bingo cards for speedrunning. Define your tags and titles, then hit
+          submit to generate your bingo card. You can then copy the output into the "Custom" tab on
+          <a href="https://bingosync.com/" target="_blank" rel="noopener noreferrer">bingosync.com</a>
+          .
+        </p>
+        <p>
+          For more information on how to use this tool, please visit the
+          <a href="https://github.com/DavidBradbury/SMBW-Bingosync" target="_blank" rel="noopener noreferrer">
+            GitHub repository
+          </a>
+          . Discussion and races can be found on the
+          <a href="https://discord.gg/hPbcRNwr" target="_blank" rel="noopener noreferrer">
+            Super Mario Bros. Wonder Speedrunning Discord server
+          </a>
+          .
+        </p>
+        <p>
+          This is still a very early version of the tool and the goals! The default values work, but we will be updating
+          them as people test and issues are found. If you have any feedback, please let us know on Discord or GitHub.
+        </p>
+      </header>
+      <form id="bingo-form">
+        <section>
+          <div class="flex flex-row">
+            <label for="tag-input" style="flex-basis: 50%">Tags | Max Appearances:</label>
+            <p>
+              The maximum number of times a tag can appear on the card. 0 means the tag can appear an unlimited number
+              of times.
+            </p>
+          </div>
+          <textarea id="tag-input" rows="5" aria-label="Tags and Max Appearances">
+EarlyGame	20
+MidGame	10
+LateGame	5
+VeryLateGame	1
+TimeShort	20
+TimeMedium	20
+TimeLong	10
+TimeVeryLong	1
+WonderSeedsInLevel	0
+WonderSeedsInWorld	0
+TenCoinsInLevel	0
+TenCoinsInWorld	8
+IndividualLevel	0
+IndividualBadge	0
+TotalBadges	2
+TotalLevels	2
+TotalWorlds	2
+TotalSpecialWorldLevels	1
+TotalCaptainToads	1
+TotalBowserJrs	2
+StandeesForCharacters	2
+Battleships	1
+Arenas	2
+WigglerRaces	2
+Gimmicks	3
+Bowser	1
+Checkmarks	1
+    </textarea
+          >
+        </section>
+
+        <section>
+          <label for="title-input">Titles | Tags:</label>
+          <textarea id="title-input" rows="5" aria-label="Titles and Tags">
+Clear 4 Worlds	MidGame TimeMedium TotalWorlds
+Clear 5 Worlds	LateGame TimeLong TotalWorlds
+Clear 6 Worlds	LateGame TimeLong TotalWorlds
+Complete 2 Battleship Levels	MidGame TimeMedium Battleships
+Complete 3 Battleship Levels	MidGame TimeMedium Battleships
+Collect All Standees for 1 Character	EarlyGame TimeMedium StandeesForCharacters
+Collect All Standees for 2 Characters	EarlyGame TimeLong StandeesForCharacters
+Collect 5 Badges	EarlyGame TimeMedium TotalBadges
+Collect 10 Badges	MidGame TimeMedium TotalBadges
+Collect 15 Badges	LateGame TimeLong TotalBadges
+Beat Bowser Jr. 2 Times	MidGame TimeMedium TotalBowserJrs
+Beat Bowser Jr. 3 Times	LateGame TimeMedium TotalBowserJrs
+Visit 2 Captain Toads	EarlyGame TimeShort TotalCaptainToads
+Visit 3 Captain Toads	EarlyGame TimeShort TotalCaptainToads
+Visit 4 Captain Toads	MidGame TimeShort TotalCaptainToads
+Visit 5 Captain Toads	MidGame TimeShort TotalCaptainToads
+Complete 5 Levels Without Badges	TimeShort Gimmicks TotalLevels
+Complete 5 Levels With the Spring Feet Badge	TimeShort Gimmicks IndividualBadge TotalLevels
+Complete 10 Levels With the Jet Run Badge	TimeMedium Gimmicks IndividualBadge TotalLevels
+Complete S-7 (Way of the Goomba)	LateGame TimeMedium IndividualLevel
+Complete 5-13 (Operation Poplin Rescue) five times	MidGame Gimmicks IndividualLevel
+Complete 4-7 (Color Switch Dungeon)	MidGame Gimmicks IndividualLevel
+Get 10 Green Checkmarks	MidGame TimeMedium Checkmarks
+Get 25 Green Checkmarks	MidGame TimeLong Checkmarks
+Complete 3 Arenas	MidGame TimeShort Arenas
+Complete 4 Arenas	MidGame TimeShort Arenas
+Complete 5 Arenas	MidGame TimeShort Arenas
+Complete 2 Wiggler Races	MidGame TimeShort WigglerRaces
+Complete 3 Wiggler Races	MidGame TimeShort WigglerRaces
+Complete 4 Wiggler Races	MidGame TimeShort WigglerRaces
+Collect 30 Wonder Seeds in World 1 - Pipe-Rock Plateau	EarlyGame TimeMedium WonderSeedsInWorld
+Collect All 35 Wonder Seeds in World 1 - Pipe-Rock Plateau	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 25 Wonder Seeds in World 2 - Fluff-Puff Peaks	EarlyGame TimeMedium WonderSeedsInWorld
+Collect All 30 Wonder Seeds in World 2 - Fluff-Puff Peaks	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 15 Wonder Seeds in World 3 - Shining Falls	EarlyGame TimeMedium WonderSeedsInWorld
+Collect All 20 Wonder Seeds in World 3 - Shining Falls	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 30 Wonder Seeds in World 4 - Sunbaked Desert	EarlyGame TimeMedium WonderSeedsInWorld
+Collect All 36 Wonder Seeds in World 4 - Sunbaked Desert	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 15 Wonder Seeds in World 5 - Fungi Mines	EarlyGame TimeMedium WonderSeedsInWorld
+Collect All 21 Wonder Seeds in World 5 - Fungi Mines	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 25 Wonder Seeds in World 6 - Deep Magma Bog	MidGame TimeMedium WonderSeedsInWorld
+Collect All 30 Wonder Seeds in World 6 - Deep Magma Bog	LateGame TimeMedium WonderSeedsInWorld
+Collect 30 Wonder Seeds in Petal Isles	LateGame TimeMedium WonderSeedsInWorld
+Collect All 34 Wonder Seeds in Petal Isles	LateGame TimeMedium WonderSeedsInWorld
+Collect 10 Wonder Seeds in Special World	LateGame TimeMedium WonderSeedsInWorld
+Collect 18 Wonder Seeds in Special World	VeryLateGame TimeMedium WonderSeedsInWorld
+Defeat Bowser	LateGame TimeLong Bowser
+Collect 9 10-Coins in Pipe-Rock Plateau	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Pipe-Rock Plateau	TenCoinsInWorld TimeMedium
+Collect 36 10-Coins in Pipe-RockPlateau	TenCoinsInWorld TimeLong
+Collect 9 10-Coins in Fluff-Puff Peaks	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Fluff-Puff Peaks	TenCoinsInWorld TimeMedium
+Collect 36 10-Coins in Fluff-Puff Peaks	TenCoinsInWorld TimeLong
+Collect 9 10-Coins in Shining Falls	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Shining Falls	TenCoinsInWorld TimeMedium
+Collect 9 10-Coins in Sunbaked Desert	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Sunbaked Desert	TenCoinsInWorld TimeMedium
+Collect 36 10-Coins in Sunbaked Desert	TenCoinsInWorld TimeLong
+Collect 9 10-Coins in Sunbaked Desert	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Sunbaked Desert	TenCoinsInWorld TimeMedium
+Collect 9 10-Coins in Fungi Mines	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Fungi Mines	TenCoinsInWorld TimeMedium
+Collect 9 10-Coins in Deep Magma Bog	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Deep Magma Bog	TenCoinsInWorld TimeMedium
+Collect 36 10-Coins in Deep Magma Bog	TenCoinsInWorld TimeLong
+Collect 9 10-Coins in Petal Isles	TenCoinsInWorld TimeShort
+Collect 18 10-Coins in Petal Isles	TenCoinsInWorld TimeMedium
+Collect 36 10-Coins in Petal Isles	TenCoinsInWorld TimeLong
+Collect 48 10-Coins in Petal Isles	TenCoinsInWorld TimeVeryLong
+Collect 9 10-Coins in Special World	TenCoinsInWorld TimeShort
+Collect 15 10-Coins in Special World	TenCoinsInWorld TimeMedium
+Collect 24 10-Coins in Special World	TenCoinsInWorld TimeLong
+    </textarea
+          >
+        </section>
+
+        <button id="generate" type="submit">Generate Bingo 🃏</button>
+        <button id="copy-button">Copy to Clipboard 📋</button>
+      </form>
+
+      <p id="errors"></p>
+
+      <h2>Output</h2>
+      <label for="hide-output">Obscure Output</label>
+      <input type="checkbox" id="hide-output" />
+
+      <textarea id="output" rows="20" aria-label="Output"></textarea>
+    </main>
+
+    <script>
+      const $ = (selector) => document.querySelector(selector)
+      const $$ = (selector) => document.querySelectorAll(selector)
+
+      const generate = (event) => {
+        event.preventDefault()
+
+        const tagInput = $("#tag-input").value.trim()
+        const titleInput = $("#title-input").value.trim()
+        const errorElement = $("#errors")
+
+        errorElement.textContent = "" // Reset error message
+
+        if (!tagInput || !titleInput) {
+          errorElement.textContent = "Both input fields are required."
+          return
+        }
+
+        const tags = parseTags(tagInput)
+        const titles = parseTitles(titleInput, tags)
+
+        if (tags.error) {
+          errorElement.textContent = tags.error
+          return
+        }
+
+        if (titles.error) {
+          errorElement.textContent = titles.error
+          return
+        }
+
+        let output = []
+        let tries = 0
+        let availableTags = Object.keys(tags).filter((tag) => tags[tag] >= 0)
+        let availableTitles = [...titles]
+
+        while (output.length < 25) {
+          if (availableTags.length === 0) {
+            availableTags = Object.keys(tags).filter((tag) => tags[tag] >= 0)
+            if (availableTags.length === 0) {
+              if (tries > 100) {
+                const randomTitleIndex = Math.floor(Math.random() * availableTitles.length)
+                output.push({ name: availableTitles[randomTitleIndex].title })
+                availableTitles.splice(randomTitleIndex, 1)
+                tries = 0
+              } else {
+                tries++
+              }
+              continue
+            }
+          }
+
+          const randomTagKey = availableTags[Math.floor(Math.random() * availableTags.length)]
+          const matchingTitles = availableTitles.filter((titleObj) => titleObj.tags.includes(randomTagKey))
+
+          if (matchingTitles.length === 0) {
+            tries++
+            continue
+          }
+
+          const randomTitleObj = matchingTitles[Math.floor(Math.random() * matchingTitles.length)]
+          output.push({ name: randomTitleObj.title })
+
+          // Update the available titles list and tag count
+          availableTitles = availableTitles.filter((titleObj) => titleObj !== randomTitleObj)
+          if (tags[randomTagKey] > 1) {
+            tags[randomTagKey]--
+          } else if (tags[randomTagKey] === 1) {
+            tags[randomTagKey] = -1
+          }
+
+          availableTags = Object.keys(tags).filter((tag) => tags[tag] >= 0)
+          tries = 0
+        }
+
+        $("#output").value = JSON.stringify(output, null, 2)
+      }
+
+      const parseTags = (input) => {
+        const lines = input.split("\n")
+        const tags = {}
+
+        for (let line of lines) {
+          const [tag, maxAppearanceStr] = line.split("\t")
+          const maxAppearance = parseInt(maxAppearanceStr, 10)
+
+          if (isNaN(maxAppearance) || maxAppearance < 0) {
+            return { error: `Invalid max appearance value for tag ${tag}: ${maxAppearanceStr}` }
+          }
+
+          tags[tag] = maxAppearance
+        }
+
+        return tags
+      }
+
+      const parseTitles = (input, tags) => {
+        const lines = input.split("\n")
+        const titles = []
+
+        for (let line of lines) {
+          const [title, tagListStr] = line.split("\t")
+          const tagList = tagListStr.split(" ")
+
+          for (let tag of tagList) {
+            if (!tags.hasOwnProperty(tag)) {
+              return { error: `Unknown tag ${tag} in title ${title}` }
+            }
+          }
+
+          titles.push({ title, tags: tagList })
+        }
+
+        return titles
+      }
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const form = document.getElementById("bingo-form")
+        form.addEventListener("submit", generate)
+
+        const copyButton = document.getElementById("copy-button")
+        copyButton.addEventListener("click", copyToClipboard)
+
+        const hideOutputCheckbox = $("#hide-output")
+        hideOutputCheckbox.addEventListener("change", updateOutputVisibility)
+        updateOutputVisibility()
+      })
+
+      const copyToClipboard = () => {
+        const output = document.getElementById("output")
+        output.select()
+        document.execCommand("copy")
+      }
+
+      const updateOutputVisibility = () => {
+        const output = $("#output")
+        const hideOutputCheckbox = $("#hide-output")
+        if (hideOutputCheckbox.checked) {
+          output.classList.add("hide")
+        } else {
+          output.classList.remove("hide")
+        }
+      }
+    </script>
+  </body>
+</html>
