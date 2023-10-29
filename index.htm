@@ -97,7 +97,7 @@
         color: #aaa;
       }
 
-      label[for="hide-output"],
+      label[for='hide-output'],
       #hide-output {
         display: inline-block;
         margin-right: 10px; /* Optional: add some spacing between the label and the checkbox */
@@ -147,7 +147,7 @@ MidGame	10
 LateGame	5
 VeryLateGame	1
 TimeShort	20
-TimeMedium	20
+TimeMedium	18
 TimeLong	10
 TimeVeryLong	1
 WonderSeedsInLevel	0
@@ -159,6 +159,7 @@ IndividualBadge	0
 TotalBadges	2
 TotalLevels	2
 TotalWorlds	2
+TotalSeeds	1
 TotalSpecialWorldLevels	1
 TotalCaptainToads	1
 TotalBowserJrs	2
@@ -166,9 +167,11 @@ StandeesForCharacters	2
 Battleships	1
 Arenas	2
 WigglerRaces	2
-Gimmicks	3
+Gimmicks	4
 Bowser	1
 Checkmarks	1
+Flagpoles	2
+FullLevel	2
     </textarea
           >
         </section>
@@ -196,8 +199,15 @@ Complete 5 Levels Without Badges	TimeShort Gimmicks TotalLevels
 Complete 5 Levels With the Spring Feet Badge	TimeShort Gimmicks IndividualBadge TotalLevels
 Complete 10 Levels With the Jet Run Badge	TimeMedium Gimmicks IndividualBadge TotalLevels
 Complete S-7 (Way of the Goomba)	LateGame TimeMedium IndividualLevel
-Complete 5-13 (Operation Poplin Rescue) five times	MidGame Gimmicks IndividualLevel
+Complete 5-13 (Operation Poplin Rescue) Three Times	MidGame Gimmicks IndividualLevel
 Complete 4-7 (Color Switch Dungeon)	MidGame Gimmicks IndividualLevel
+Complete S-1 (Bounce, Bounce, Bounce)	EarlyGame TimeMedium IndividualLevel
+Complete S-8 (The Semifinal Test Piranha Plant Reprise)	LateGame TimeMedium IndividualLevel
+100% 1-6 (Rolla Koopa Derby)	FullLevel TimeMedium
+100% 4-8 (Secrets of Shova Mansion)	FullLevel TimeMedium
+100% 5-7 (A Final Uncharted Area: Poison Ruins)	FullLevel TimeMedium
+100% 6-3 (Pull, Turn, Burn)	FullLevel TimeMedium
+100% P-1 (Leaping Smackerel)	FullLevel TimeMedium
 Get 10 Green Checkmarks	MidGame TimeMedium Checkmarks
 Get 25 Green Checkmarks	MidGame TimeLong Checkmarks
 Complete 3 Arenas	MidGame TimeShort Arenas
@@ -206,22 +216,15 @@ Complete 5 Arenas	MidGame TimeShort Arenas
 Complete 2 Wiggler Races	MidGame TimeShort WigglerRaces
 Complete 3 Wiggler Races	MidGame TimeShort WigglerRaces
 Complete 4 Wiggler Races	MidGame TimeShort WigglerRaces
-Collect 30 Wonder Seeds in World 1 - Pipe-Rock Plateau	EarlyGame TimeMedium WonderSeedsInWorld
-Collect All 35 Wonder Seeds in World 1 - Pipe-Rock Plateau	EarlyGame TimeMedium WonderSeedsInWorld
-Collect 25 Wonder Seeds in World 2 - Fluff-Puff Peaks	EarlyGame TimeMedium WonderSeedsInWorld
-Collect All 30 Wonder Seeds in World 2 - Fluff-Puff Peaks	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 21 Wonder Seeds in World 1 - Pipe-Rock Plateau	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 21 Wonder Seeds in World 2 - Fluff-Puff Peaks	EarlyGame TimeMedium WonderSeedsInWorld
 Collect 15 Wonder Seeds in World 3 - Shining Falls	EarlyGame TimeMedium WonderSeedsInWorld
-Collect All 20 Wonder Seeds in World 3 - Shining Falls	EarlyGame TimeMedium WonderSeedsInWorld
-Collect 30 Wonder Seeds in World 4 - Sunbaked Desert	EarlyGame TimeMedium WonderSeedsInWorld
-Collect All 36 Wonder Seeds in World 4 - Sunbaked Desert	EarlyGame TimeMedium WonderSeedsInWorld
-Collect 15 Wonder Seeds in World 5 - Fungi Mines	EarlyGame TimeMedium WonderSeedsInWorld
-Collect All 21 Wonder Seeds in World 5 - Fungi Mines	EarlyGame TimeMedium WonderSeedsInWorld
-Collect 25 Wonder Seeds in World 6 - Deep Magma Bog	MidGame TimeMedium WonderSeedsInWorld
-Collect All 30 Wonder Seeds in World 6 - Deep Magma Bog	LateGame TimeMedium WonderSeedsInWorld
-Collect 30 Wonder Seeds in Petal Isles	LateGame TimeMedium WonderSeedsInWorld
-Collect All 34 Wonder Seeds in Petal Isles	LateGame TimeMedium WonderSeedsInWorld
-Collect 10 Wonder Seeds in Special World	LateGame TimeMedium WonderSeedsInWorld
-Collect 18 Wonder Seeds in Special World	VeryLateGame TimeMedium WonderSeedsInWorld
+Collect 23 Wonder Seeds in World 4 - Sunbaked Desert	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 17 Wonder Seeds in World 5 - Fungi Mines	EarlyGame TimeMedium WonderSeedsInWorld
+Collect 21 Wonder Seeds in World 6 - Deep Magma Bog	MidGame TimeMedium WonderSeedsInWorld
+Collect 20 Wonder Seeds in Petal Isles	LateGame TimeMedium WonderSeedsInWorld
+Collect 4 Wonder Seeds in Special World	LateGame TimeMedium WonderSeedsInWorld
+Collect 9 Wonder Seeds in Special World	VeryLateGame TimeMedium WonderSeedsInWorld
 Defeat Bowser	LateGame TimeLong Bowser
 Collect 9 10-Coins in Pipe-Rock Plateau	TenCoinsInWorld TimeShort
 Collect 18 10-Coins in Pipe-Rock Plateau	TenCoinsInWorld TimeMedium
@@ -248,6 +251,19 @@ Collect 48 10-Coins in Petal Isles	TenCoinsInWorld TimeVeryLong
 Collect 9 10-Coins in Special World	TenCoinsInWorld TimeShort
 Collect 15 10-Coins in Special World	TenCoinsInWorld TimeMedium
 Collect 24 10-Coins in Special World	TenCoinsInWorld TimeLong
+All Golden Flagpoles in W1 - Pipe-Rock Plateau	EarlyGame TimeMedium Flagpoles
+All Golden Flagpoles in W2 - Fluff-Puff Peaks	EarlyGame TimeMedium Flagpoles
+All Golden Flagpoles in W3 - Shining Falls	EarlyGame TimeMedium Flagpoles
+All Golden Flagpoles in W4 - Sunbaked Desert	MidGame TimeMedium Flagpoles
+All Golden Flagpoles in W5 - Fungi Mines	MidGame TimeMedium Flagpoles
+All Golden Flagpoles in W6 - Deep Magma Bog	LateGame TimeMedium Flagpoles
+All Golden Flagpoles in Petal Isles	VeryLateGame TimeMedium Flagpoles
+W1 - Pipe-Rock Plateau Start to Palace as Nabbit	EarlyGame TimeShort Gimmicks
+W1 Start to Palace Coinless (Restart per level)	EarlyGame TimeMedium Gimmicks
+Get Both Exits in a Level with a Secret Exit	TimeShort Gimmicks
+Get any Toadette Standee	TimeShort Gimmicks
+Get any Goomba Standee	TimeShort Gimmicks
+120 Seeds Total 	TimeLong TotalSeeds
     </textarea
           >
         </section>
@@ -268,18 +284,19 @@ Collect 24 10-Coins in Special World	TenCoinsInWorld TimeLong
     <script>
       const $ = (selector) => document.querySelector(selector)
       const $$ = (selector) => document.querySelectorAll(selector)
+      const MAX_TRIES = 100
 
       const generate = (event) => {
         event.preventDefault()
 
-        const tagInput = $("#tag-input").value.trim()
-        const titleInput = $("#title-input").value.trim()
-        const errorElement = $("#errors")
+        const tagInput = $('#tag-input').value.trim()
+        const titleInput = $('#title-input').value.trim()
+        const errorElement = $('#errors')
 
-        errorElement.textContent = "" // Reset error message
+        errorElement.textContent = '' // Reset error message
 
         if (!tagInput || !titleInput) {
-          errorElement.textContent = "Both input fields are required."
+          errorElement.textContent = 'Both input fields are required.'
           return
         }
 
@@ -297,7 +314,9 @@ Collect 24 10-Coins in Special World	TenCoinsInWorld TimeLong
         }
 
         let output = []
+        let tagDistribution = {} // Initialize an object to keep track of tag usage
         let tries = 0
+        let maxTries = 0 // Initialize a variable to keep track of the maximum number of tries
         let availableTags = Object.keys(tags).filter((tag) => tags[tag] >= 0)
         let availableTitles = [...titles]
 
@@ -305,13 +324,14 @@ Collect 24 10-Coins in Special World	TenCoinsInWorld TimeLong
           if (availableTags.length === 0) {
             availableTags = Object.keys(tags).filter((tag) => tags[tag] >= 0)
             if (availableTags.length === 0) {
-              if (tries > 100) {
+              if (tries > MAX_TRIES) {
                 const randomTitleIndex = Math.floor(Math.random() * availableTitles.length)
-                output.push({ name: availableTitles[randomTitleIndex].title })
+                output.push({name: availableTitles[randomTitleIndex].title})
                 availableTitles.splice(randomTitleIndex, 1)
                 tries = 0
               } else {
                 tries++
+                maxTries = Math.max(maxTries, tries) // Update maxTries if the current tries is greater
               }
               continue
             }
@@ -322,37 +342,54 @@ Collect 24 10-Coins in Special World	TenCoinsInWorld TimeLong
 
           if (matchingTitles.length === 0) {
             tries++
+            maxTries = Math.max(maxTries, tries) // Update maxTries if the current tries is greater
             continue
           }
 
           const randomTitleObj = matchingTitles[Math.floor(Math.random() * matchingTitles.length)]
-          output.push({ name: randomTitleObj.title })
 
-          // Update the available titles list and tag count
-          availableTitles = availableTitles.filter((titleObj) => titleObj !== randomTitleObj)
-          if (tags[randomTagKey] > 1) {
-            tags[randomTagKey]--
-          } else if (tags[randomTagKey] === 1) {
-            tags[randomTagKey] = -1
+          const allTagsAvailable = randomTitleObj.tags.every((tag) => tags[tag] !== -1)
+
+          if (!allTagsAvailable) {
+            tries++
+            maxTries = Math.max(maxTries, tries) // Update maxTries if the current tries is greater
+            continue
           }
 
+          randomTitleObj.tags.forEach((tag) => {
+            if (tags[tag] > 1) {
+              tags[tag]--
+            } else if (tags[tag] === 1) {
+              tags[tag] = -1
+            }
+
+            // Update the tag distribution
+            tagDistribution[tag] = (tagDistribution[tag] || 0) + 1
+          })
+
+          output.push({name: randomTitleObj.title})
+          availableTitles = availableTitles.filter((titleObj) => titleObj !== randomTitleObj)
           availableTags = Object.keys(tags).filter((tag) => tags[tag] >= 0)
           tries = 0
         }
 
-        $("#output").value = JSON.stringify(output, null, 2)
+        $('#output').value = JSON.stringify(output, null, 2)
+
+        // Log max tries and tag distribution
+        console.log('Max Tries:', maxTries)
+        console.log('Tag Distribution:', tagDistribution)
       }
 
       const parseTags = (input) => {
-        const lines = input.split("\n")
+        const lines = input.split('\n')
         const tags = {}
 
         for (let line of lines) {
-          const [tag, maxAppearanceStr] = line.split("\t")
+          const [tag, maxAppearanceStr] = line.split('\t')
           const maxAppearance = parseInt(maxAppearanceStr, 10)
 
           if (isNaN(maxAppearance) || maxAppearance < 0) {
-            return { error: `Invalid max appearance value for tag ${tag}: ${maxAppearanceStr}` }
+            return {error: `Invalid max appearance value for tag ${tag}: ${maxAppearanceStr}`}
           }
 
           tags[tag] = maxAppearance
@@ -362,50 +399,50 @@ Collect 24 10-Coins in Special World	TenCoinsInWorld TimeLong
       }
 
       const parseTitles = (input, tags) => {
-        const lines = input.split("\n")
+        const lines = input.split('\n')
         const titles = []
 
         for (let line of lines) {
-          const [title, tagListStr] = line.split("\t")
-          const tagList = tagListStr.split(" ")
+          const [title, tagListStr] = line.split('\t')
+          const tagList = tagListStr.split(' ')
 
           for (let tag of tagList) {
             if (!tags.hasOwnProperty(tag)) {
-              return { error: `Unknown tag ${tag} in title ${title}` }
+              return {error: `Unknown tag ${tag} in title ${title}`}
             }
           }
 
-          titles.push({ title, tags: tagList })
+          titles.push({title, tags: tagList})
         }
 
         return titles
       }
 
-      document.addEventListener("DOMContentLoaded", (event) => {
-        const form = document.getElementById("bingo-form")
-        form.addEventListener("submit", generate)
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const form = $('#bingo-form')
+        form.addEventListener('submit', generate)
 
-        const copyButton = document.getElementById("copy-button")
-        copyButton.addEventListener("click", copyToClipboard)
+        const copyButton = $('#copy-button')
+        copyButton.addEventListener('click', copyToClipboard)
 
-        const hideOutputCheckbox = $("#hide-output")
-        hideOutputCheckbox.addEventListener("change", updateOutputVisibility)
+        const hideOutputCheckbox = $('#hide-output')
+        hideOutputCheckbox.addEventListener('change', updateOutputVisibility)
         updateOutputVisibility()
       })
 
       const copyToClipboard = () => {
-        const output = document.getElementById("output")
+        const output = $('#output')
         output.select()
-        document.execCommand("copy")
+        document.execCommand('copy')
       }
 
       const updateOutputVisibility = () => {
-        const output = $("#output")
-        const hideOutputCheckbox = $("#hide-output")
+        const output = $('#output')
+        const hideOutputCheckbox = $('#hide-output')
         if (hideOutputCheckbox.checked) {
-          output.classList.add("hide")
+          output.classList.add('hide')
         } else {
-          output.classList.remove("hide")
+          output.classList.remove('hide')
         }
       }
     </script>
